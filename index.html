@@ -118,9 +118,6 @@
     </ul>
   </div>
   <footer>
-    <button id="download-btn"><a id="download-link" href="#">Download i-Tools</a></button>
-    <button id="faq-btn"><a id="faq-link" href="#">Frequently Asked Questions</a></button>
-    <button id="version-btn"><a id="current-version-link" href="#">Version 1.0</a></button>
     <a class="footer-link" href="#">Privacy Policy</a>
     <a class="footer-link" href="#">Terms of Service</a>
     <a class="footer-link" href="#">Contact Us</a>
@@ -136,15 +133,18 @@
     const currentVersionLink = document.querySelector('#current-version-link');
     const faqLink = document.querySelector('#faq-link');
 
-    extensionBtn.classList.add('active');
-    version2Link.href = 'https://example.net/extension-version-2';
-    version1Link.href = 'https://example.net/extension-version-1';
-    version0Link.href = 'https://example.net/extension-version-0';
-    downloadLink.href = 'https://example.net/extension-download';
-    currentVersionLink.href = 'https://example.net/extension-version-1';
-    faqLink.href = 'https://example.net/extension-faq';
+    function setExtension() {
+      extensionBtn.classList.add('active');
+      bookmarkletBtn.classList.remove('active');
+      version2Link.href = 'https://example.net/extension-version-2';
+      version1Link.href = 'https://example.net/extension-version-1';
+      version0Link.href = 'https://drive.google.com/uc?id=1Vczmwrylc_s4CYnCjXo3U6osgGbllytn';
+      downloadLink.href = 'https://example.net/extension-download';
+      currentVersionLink.href = 'https://example.net/extension-version-1';
+      faqLink.href = 'https://example.net/extension-faq';
+    }
 
-    bookmarkletBtn.addEventListener('click', () => {
+    function setBookmarklet() {
       bookmarkletBtn.classList.add('active');
       extensionBtn.classList.remove('active');
       version2Link.href = 'https://example.com/bookmarklet-version-2';
@@ -153,17 +153,17 @@
       downloadLink.href = 'https://example.com/bookmarklet-download';
       currentVersionLink.href = 'https://example.com/bookmarklet-version-1';
       faqLink.href = 'https://example.com/bookmarklet-faq';
+    }
+
+    // Set the default to the extension setting
+    setExtension();
+
+    bookmarkletBtn.addEventListener('click', () => {
+      setBookmarklet();
     });
 
     extensionBtn.addEventListener('click', () => {
-      extensionBtn.classList.add('active');
-      bookmarkletBtn.classList.remove('active');
-      version2Link.href = 'https://example.net/extension-version-2';
-      version1Link.href = 'https://example.net/extension-version-1';
-      version0Link.href = 'https://example.net/extension-version-0';
-      downloadLink.href = 'https://example.net/extension-download';
-      currentVersionLink.href = 'https://example.net/extension-version-1';
-      faqLink.href = 'https://example.net/extension-faq';
+      setExtension();
     });
   </script>
 </body>
