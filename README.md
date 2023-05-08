@@ -1,8 +1,6 @@
-# I-Tools
-I-Ready Hacks
-simply open https://lenn106.github.io/i-Tools/ and download the files!
-
-Youtube Tutorial: https://www.youtube.com/watch?v=deFT3gpXfAk&ab_channel=Lenn106
+# I-Tools Download Page
+A subdomain for an i-Tools project
+https://lenn106.github.io/i-Tools-Downloads/
 
 
 My Discord: https://discord.gg/PDRTFTHQnA
