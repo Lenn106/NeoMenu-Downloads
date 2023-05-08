@@ -1,178 +1,170 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>i-Tools Download Page</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap">
   <style>
-    /* New styles for menu */
-    .menu {
-      background-color: rgba(0, 0, 0, 0.7);
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 80px; /* increased height to fix blank spots */
-      display: flex;
-      justify-content: center;
-      align-items: center; /* centered menu items vertically */
-      z-index: 2;
-      font-family: 'Nunito', sans-serif;
-    }
-
-    .menu a {
-      color: white;
-      font-size: 18px;
-      text-decoration: none;
-      padding: 10px;
-    }
-
-    .menu a:hover {
-      background-color: rgba(255, 255, 255, 0.2);
-    }
-
-    .container {
-      max-width: 100%;
-      margin: 0 auto;
-      padding: 190px;
-      text-align: center;
-      box-sizing: border-box;
-      font-family: 'Nunito', sans-serif;
-    }
-
-    .container img {
-      max-width: 80px;
-      height: auto;
-    }
-
-    .logo {
-      max-width: 100px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 36px;
-      font-weight: 700;
-      margin-top: 0;
-      margin-bottom: 20px;
-      font-family: 'Nunito', sans-serif;
-      color: white;
-    }
-
-    p {
-      font-size: 24px;
-      font-weight: 400;
-      margin-top: 20px;
-      color: white;
-      font-family: 'Nunito', sans-serif;
-    }
-
-    .download-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 40px;
-      padding: 5px;
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 5px;
-      text-decoration: none;
-      font-family: 'Nunito', sans-serif;
-      cursor: pointer; /* added cursor pointer to download link */
-      position: relative; /* added position: relative to download button */
-    }
-
-    .download-link img {
-      margin-right: 10px;
-      height: 50px; /* changed height of download button logo */
-      width: auto;
-    }
-
-    span {
-      font-size: 24px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
-
-    .discord-logo {
-      max-width: 80px;
-      height: auto;
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      cursor: pointer;
-    }
-
-    .rainbow-logo:hover,
-    .download-link:hover img {
-      animation: rainbow 1s linear infinite;
-    }
-
+    /* General styles */
     body {
       background-image: url('https://giffiles.alphacoders.com/211/211236.gif');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
-      margin: 0; /* removed default margin */
+      margin: 0;
       font-family: 'Nunito', sans-serif;
     }
 
-    /* Added styles for menu placeholders */
-    @media only screen and (max-width: 768px) {
-      .menu {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        padding: 5px;
-        background-color: rgba(0, 0, 0, 0.7);
-        font-family: 'Nunito', sans-serif;
-        height: 60px; /* adjusted height for smaller screens */
-      }
+    /* Header styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 0 0 10px 10px;
     }
 
-    /* Added rainbow effect to logo on hover */
-    @keyframes rainbow {
-      0% { filter: hue-rotate(0deg); }
-      100% { filter: hue-rotate(360deg); }
+    .logo {
+      max-width: 150px;
+      height: auto;
+    }
+
+    button {
+      color: white;
+      background-color: rgba(0, 0, 0, 0.8);
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-right: 20px;
+      cursor: pointer;
+    }
+
+    button.active {
+      background-color: #007bff;
+    }
+
+    /* Menu styles */
+    .menu {
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px;
+    }
+
+    .menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .menu li {
+      margin-bottom: 10px;
+      border-radius: 5px;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+    }
+
+    .menu a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    /* Footer styles */
+    footer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.7);
+      border-radius: 10px;
+      margin: 20px;
+    }
+
+    footer button {
+      background-color: rgba(0, 0, 0, 0.8);
+      margin: 0 10px;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+    }
+    
+    footer img {
+      display: none;
+    }
+
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      font-size: 16px;
+      margin-right: 20px;
     }
   </style>
-  <script>
-    // Add event listener to download button
-    document.addEventListener('DOMContentLoaded', function() {
-      const downloadBtn = document.querySelector('.download-link');
-
-      downloadBtn.addEventListener('click', function() {
-        window.open('https://mega.nz/folder/hq5RACSB#aBlXftjFwbeUxWf3o-xDUA', '_blank'); // open link in new tab
-      });
-    });
-
-    // Add audio playing on page load
-    window.onload = function() {
-      const audio = new Audio('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3');
-      audio.play();
-    };
-  </script>
 </head>
 <body>
-  <a href="https://discord.com/invite/PDRTFTHQnA" target="_blank">
-    <img class="discord-logo rainbow-logo" src="https://tinypic.host/images/2023/05/06/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" alt="Discord Logo" border="0" />
-  </a>
+  <header>
+    <img class="logo" src="https://tinypic.host/images/2023/05/06/icon.png" alt="i-Tools Logo">
+    <div>
+      <button id="bookmarklet-btn">Bookmarklet</button>
+      <button id="extension-btn" class="active">Extension</button>
+    </div>
+  </header>
   <div class="menu">
-    <a href="https://www.youtube.com/watch?v=deFT3gpXfAk&ab_channel=Lenn106" target="_blank">Tutorial</a> 
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSf6WDRaGap9UZkQiuQz3bUdKhlpyowvHIDEyrGjaqbq2KTs8w/viewform" target="_blank">Join Our Staff</a>
-    <a href="https://github.com/Lenn106" target="_blank">My GitHub</a> 
+    <ul id="menu-items">
+      <li><a id="version-2-link" href="#">Version 2.0</a></li>
+      <li><a id="version-1-link" href="#">Version 1.0 (Initial Release)</a></li>
+      <li><a id="version-0-link" href="#">Version 0.0 (Demo)</a></li>
+    </ul>
   </div>
-  <div class="container">
-    <img class="logo" src="https://tinypic.host/images/2023/05/06/icon.png" alt="Logo" border="0" />
-    <h1>i-Tools</h1>
-    <p>i-Tools eliminates the stress and agony that comes with i-Ready. </p>
-    <a href="#" class="download-link">
-      <img src="https://tinypic.host/images/2023/05/06/icon.png" alt="Download Icon" />
-      <span>Download Now</span>
-    </a>
-  </div>
+  <footer>
+    <button id="download-btn"><a id="download-link" href="#">Download i-Tools</a></button>
+    <button id="faq-btn"><a id="faq-link" href="#">Frequently Asked Questions</a></button>
+    <button id="version-btn"><a id="current-version-link" href="#">Version 1.0</a></button>
+    <a class="footer-link" href="#">Privacy Policy</a>
+    <a class="footer-link" href="#">Terms of Service</a>
+    <a class="footer-link" href="#">Contact Us</a>
+  </footer>
+  <script>
+    // Toggle menu items and links between file and bookmarklet versions
+    const bookmarkletBtn = document.querySelector('#bookmarklet-btn');
+    const extensionBtn = document.querySelector('#extension-btn');
+    const version2Link = document.querySelector('#version-2-link');
+    const version1Link = document.querySelector('#version-1-link');
+    const version0Link = document.querySelector('#version-0-link');
+    const downloadLink = document.querySelector('#download-link');
+    const currentVersionLink = document.querySelector('#current-version-link');
+    const faqLink = document.querySelector('#faq-link');
+
+    extensionBtn.classList.add('active');
+    version2Link.href = 'https://example.net/extension-version-2';
+    version1Link.href = 'https://example.net/extension-version-1';
+    version0Link.href = 'https://example.net/extension-version-0';
+    downloadLink.href = 'https://example.net/extension-download';
+    currentVersionLink.href = 'https://example.net/extension-version-1';
+    faqLink.href = 'https://example.net/extension-faq';
+
+    bookmarkletBtn.addEventListener('click', () => {
+      bookmarkletBtn.classList.add('active');
+      extensionBtn.classList.remove('active');
+      version2Link.href = 'https://example.com/bookmarklet-version-2';
+      version1Link.href = 'https://example.com/bookmarklet-version-1';
+      version0Link.href = 'https://raw.githubusercontent.com/Lenn106/i-Tools-Old-Versions-Archive/37e021f61822814fd9ac3974666fba5a66dafaf3/Demo%20i-Tools%20Bookmarklet';
+      downloadLink.href = 'https://example.com/bookmarklet-download';
+      currentVersionLink.href = 'https://example.com/bookmarklet-version-1';
+      faqLink.href = 'https://example.com/bookmarklet-faq';
+    });
+
+    extensionBtn.addEventListener('click', () => {
+      extensionBtn.classList.add('active');
+      bookmarkletBtn.classList.remove('active');
+      version2Link.href = 'https://example.net/extension-version-2';
+      version1Link.href = 'https://example.net/extension-version-1';
+      version0Link.href = 'https://example.net/extension-version-0';
+      downloadLink.href = 'https://example.net/extension-download';
+      currentVersionLink.href = 'https://example.net/extension-version-1';
+      faqLink.href = 'https://example.net/extension-faq';
+    });
+  </script>
 </body>
 </html>
