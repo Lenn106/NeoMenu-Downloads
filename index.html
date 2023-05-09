@@ -38,6 +38,8 @@
       font-size: 18px;
       margin-right: 20px;
       cursor: pointer;
+      display: flex;
+      align-items: center;
     }
 
     button.active {
@@ -50,6 +52,13 @@
       border-radius: 10px;
       padding: 20px;
       margin: 20px;
+      max-width: 600px;
+    }
+
+    .menu h2 {
+      color: white;
+      font-size: 24px;
+      margin-top: 0;
     }
 
     .menu ul {
@@ -60,67 +69,63 @@
 
     .menu li {
       margin-bottom: 10px;
-      border-radius: 5px;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
       padding: 10px;
+      display: flex;
+      align-items: center;
     }
 
     .menu a {
       color: white;
       text-decoration: none;
       font-size: 18px;
+      margin-left: 10px;
     }
 
-    /* Footer styles */
-    footer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 20px;
-      background-color: rgba(0, 0, 0, 0.7);
-      border-radius: 10px;
-      margin: 20px;
-    }
-
-    footer button {
-      background-color: rgba(0, 0, 0, 0.8);
-      margin: 0 10px;
-      font-size: 16px;
-      display: flex;
-      align-items: center;
-    }
+    .version-icon {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
     
-    footer img {
-      display: none;
-    }
-
-    .footer-link {
-      color: white;
-      text-decoration: none;
-      font-size: 16px;
-      margin-right: 20px;
-    }
   </style>
 </head>
 <body>
   <header>
     <img class="logo" src="https://tinypic.host/images/2023/05/06/icon.png" alt="i-Tools Logo">
     <div>
-      <button id="bookmarklet-btn">Bookmarklet</button>
-      <button id="extension-btn" class="active">Extension</button>
+      <button id="bookmarklet-btn">
+        Bookmarklet
+      </button>
+      <button id="extension-btn">
+        Extension
+      </button>
+      <button id="test-menu-btn" onclick="runTestCode()">
+        Test Menu
+      </button>
     </div>
   </header>
   <div class="menu">
+    <h2>Download i-Tools</h2>
     <ul id="menu-items">
-      <li><a id="version-2-link" href="#">Version 2.0</a></li>
-      <li><a id="version-1-link" href="#">Version 1.0 (Initial Release)</a></li>
-      <li><a id="version-0-link" href="#">Version 0.0 (Demo)</a></li>
+      <li>
+        <img class="version-icon" src="https://tinypic.host/images/2023/05/06/icon.png" alt="Version 2.0 logo">
+        <a id="version-2-link" href="#">Version 2.0</a>
+      </li>
+      <li>
+        <img class="version-icon" src="https://tinypic.host/images/2023/05/06/icon.png" alt="Version 1.0 logo">
+        <a id="version-1-link" href="#">Version 1.0 (Initial Release)</a>
+      </li>
+      <li>
+        <img class="version-icon" src="https://tinypic.host/images/2023/05/06/icon.png" alt="Version 0.0 logo">
+        <a id="version-0-link" href="#">Version 0.0 (Demo)</a>
+      </li>
     </ul>
   </div>
   <footer>
-    <a class="footer-link" href="#">Privacy Policy</a>
-    <a class="footer-link" href="#">Terms of Service</a>
-    <a class="footer-link" href="#">Contact Us</a>
+    <a class="footer-link" href="#"> </a>
+    <a class="footer-link" href="#"> </a>
+    <a class="footer-link" href="#"> </a>
   </footer>
   <script>
     // Toggle menu items and links between file and bookmarklet versions
@@ -129,9 +134,7 @@
     const version2Link = document.querySelector('#version-2-link');
     const version1Link = document.querySelector('#version-1-link');
     const version0Link = document.querySelector('#version-0-link');
-    const downloadLink = document.querySelector('#download-link');
-    const currentVersionLink = document.querySelector('#current-version-link');
-    const faqLink = document.querySelector('#faq-link');
+    const testMenuBtn = document.querySelector('#test-menu-btn');
 
     function setExtension() {
       extensionBtn.classList.add('active');
@@ -139,9 +142,7 @@
       version2Link.href = 'https://example.net/extension-version-2';
       version1Link.href = 'https://example.net/extension-version-1';
       version0Link.href = 'https://drive.google.com/uc?id=1Vczmwrylc_s4CYnCjXo3U6osgGbllytn';
-      downloadLink.href = 'https://example.net/extension-download';
-      currentVersionLink.href = 'https://example.net/extension-version-1';
-      faqLink.href = 'https://example.net/extension-faq';
+      testMenuBtn.style.display = 'none';
     }
 
     function setBookmarklet() {
@@ -150,21 +151,19 @@
       version2Link.href = 'https://example.com/bookmarklet-version-2';
       version1Link.href = 'https://example.com/bookmarklet-version-1';
       version0Link.href = 'https://raw.githubusercontent.com/Lenn106/i-Tools-Old-Versions-Archive/37e021f61822814fd9ac3974666fba5a66dafaf3/Demo%20i-Tools%20Bookmarklet';
-      downloadLink.href = 'https://example.com/bookmarklet-download';
-      currentVersionLink.href = 'https://example.com/bookmarklet-version-1';
-      faqLink.href = 'https://example.com/bookmarklet-faq';
+      testMenuBtn.style.display = 'block';
     }
 
-    // Set the default to the extension setting
+    function runTestCode() {
+      // Add your JavaScript code here to be executed when "Test Menu" button is clicked
+      (function(){  var e=document.createElement("div");  e.style="position:fixed;top:192px;left:219px;background-color:#222222;border:2px solid #337ab7;color:#337ab7;font-family:sans-serif;padding:20px;border-radius:10px;cursor:grab;height:400px;width:250px;box-shadow:0 0 10px #337ab7;z-index:99999;display:flex;flex-direction:column;align-items:center;",  e.innerHTML="<div style='display:flex;justify-content:space-between;width:100%;align-items:center;margin-bottom:10px;'> \    <a href='https://discord.gg/PDRTFTHQnA' target='_blank' style='margin-right:10px;'> \      <img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAB8klEQVQ4Ea2UzUuUURSHHS3UqaFgipJqRJgWUmJBtMlFEBRBIhbhR7iQaCG4kP6Q+gMECXLRok3Qqk3MYtRFQZlIQSBMKAQFUfkV1vQ8L3OHyyDIyPzg4d573nPPve85531Tww9+NjVSzY0MZqwDuwQ8jK0LuuE9fIIUKMer0A7LsAp/oKo4YBvWuzAKFyALBXgDGfgHG3AHTsEaFGG6MpYZm1JRDgdZz8BRH9ShRXw95LN7Qg6PMZ+CeoMZ4zzch+RtQ8DrGC7DfmSMIci72UUaNJjD/SrHxpuQMqAVvQSxvrCYhQX4Gz1YZ/4SXsCvyN7C/AakDdgDxyFIx4cwDlb8HSir+BRGQLvVTSrLqGyzDgOeg4MQ9J3JW9iBEthvyraxTX6D7TMH+gRlmeQMeCZYKqMVNwVWrRM8UOnbBza+eb8CSWUZVSuc0KBDLNePYADy0AvKr2QMbGrzeg20BXlgxoBxHnzo2k33XNTIm92q2ExBrcpGXQJzEuQnZfLn4StsgbkS/UrwCp7DJgTpu+INfT2dJsGKn4SzMAHe4jT4Bfma30Dfi/AY7F2L9BqMUzSgbfIEPLUfboNV/gjb8AFq5c30KcCzypj8WOOfA/YkyYcYvVmcBp/FshhHwMAeWpU3jGVBfIW9pN+P3ZwsSkP1H2BvZtLmW38/AAAAAElFTkSuQmCC' alt='Logo' style='width: 40px;height: 40px;margin-right: 5px;'> \    </a> \    <button id='close-button' style='background-color:transparent;border:none;font-size:20px;font-weight:bold;color:#337ab7;padding:0px 5px;cursor:pointer;'>X</button> \  </div> \  <h2 style='margin:0 0 10px;font-size:24px;font-weight:bold;text-align:center;color:#337ab7;'>I-Tools</h2><hr style='border:none;border-top:1px solid #337ab7;'> \  <div style='display:flex;flex-direction:column;justify-content:space-evenly;height:300px;'> \  <button id='button1' style='background-color:#337ab7;border:none;border-radius:3px;padding:10px;color:#fff;font-size:16px;font-weight:bold;box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);transition: transform 0.2s ease-in-out;width:100%;text-align:center;min-width:150px;'>Test</button> \  <button id='button2' style='background-color:#337ab7;border:none;border-radius:3px;padding:10px;color:#fff;font-size:16px;font-weight:bold;box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);transition: transform 0.2s ease-in-out;width:100%;text-align:center;min-width:150px;'>Button 2</button> \  <button id='button3' style='background-color:#337ab7;border:none;border-radius:3px;padding:10px;color:#fff;font-size:16px;font-weight:bold;box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);transition: transform 0.2s ease-in-out;width:100%;text-align:center;min-width:150px;'>Button 3</button> \  <button id='button4' style='background-color:#337ab7;border:none;border-radius:3px;padding:10px;color:#fff;font-size:16px;font-weight:bold;box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);transition: transform 0.2s ease-in-out;width:100%;text-align:center;min-width:150px;'>Button 4</button> \  <button id='button5' style='background-color:#337ab7;border:none;border-radius:3px;padding:10px;color:#fff;font-size:16px;font-weight:bold;box-shadow:0 2px 5px rgba(0, 0, 0, 0.3);transition: transform 0.2s ease-in-out;width:100%;text-align:center;min-width:150px;'>Button 5</button> \  </div>";  document.body.appendChild(e);  document.getElementById("close-button").addEventListener("click", function(){    document.body.removeChild(e);  });  var isDragging = false;  var xOffset = 0;  var yOffset = 0;function handleMouseUp(event){isDragging=false;e.style.cursor='move';}  function handleCloseButtonClick(event){e.parentNode.removeChild(e);}  document.getElementById("close-button").addEventListener("click",handleCloseButtonClick);  function handleButton1Click(event){alert("Button 1 clicked!");}  document.getElementById("button1").addEventListener("click",handleButton1Click);  function handleButton2Click(event){alert("Button 2 clicked!");}  document.getElementById("button2").addEventListener("click",handleButton2Click);  function handleButton3Click(event){alert("Button 3 clicked!");}  document.getElementById("button3").addEventListener("click",handleButton3Click);  function handleButton4Click(event){alert("Button 4 clicked!");}  document.getElementById("button4").addEventListener("click",handleButton4Click);  function handleButton5Click(event){alert("Button 5 clicked!");}  document.getElementById("button5").addEventListener("click",handleButton5Click);   e.addEventListener("mousedown", function(event){    isDragging = true;    xOffset = event.clientX - e.offsetLeft;    yOffset = event.clientY - e.offsetTop;    e.style.cursor = "grabbing";  });  document.addEventListener("mousemove", function(event){    if(isDragging){      e.style.left = (event.clientX - xOffset) + "px";      e.style.top = (event.clientY - yOffset) + "px";    }  });  document.addEventListener("mouseup", function(){    isDragging = false;    e.style.cursor = "grab";  });})();;
+    }
+
+    bookmarkletBtn.addEventListener('click', setBookmarklet);
+    extensionBtn.addEventListener('click', setExtension);
+
+    // Set the initial version to extension
     setExtension();
-
-    bookmarkletBtn.addEventListener('click', () => {
-      setBookmarklet();
-    });
-
-    extensionBtn.addEventListener('click', () => {
-      setExtension();
-    });
   </script>
 </body>
 </html>
