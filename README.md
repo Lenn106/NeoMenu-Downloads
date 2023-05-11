@@ -1,6 +1,6 @@
 # I-Tools Download Page
 A subdomain for an i-Tools project
-https://lenn106.github.io/i-Tools-Downloads/
+https://lenn106.github.io/NeoMenu-Downloads/
 
 
 My Discord: https://discord.gg/PDRTFTHQnA
